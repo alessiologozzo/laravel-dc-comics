@@ -6,6 +6,10 @@ $fa-font-path: "..fonts/webfonts" !default;
 $app_blue: #0282f9;
 $app_black: #1c1c1c;
 
+body{
+    overflow-x: hidden;
+}
+
 .al-bg-blue{
     background-color: $app_blue;
     color: white;

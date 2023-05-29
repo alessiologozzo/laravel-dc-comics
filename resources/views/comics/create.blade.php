@@ -15,7 +15,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="title">Titolo</label>
-                    <input type="text" name="title" id="title">
+                    <input type="text" name="title" id="title" placeholder="Titolo...">
                     
                     @if ($errors->has("title"))
                         <div class="text-danger">
@@ -26,7 +26,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="thumb">Immagine</label>
-                    <input type="text" name="thumb" id="thumb">
+                    <input type="text" name="thumb" id="thumb" placeholder="Immagine...">
 
                     @if ($errors->has("thumb"))
                         <div class="text-danger">
@@ -37,7 +37,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="description">Descrizione</label>
-                    <input type="text" name="description" id="description">
+                    <input type="text" name="description" id="description" placeholder="Descrizione...">
 
                     @if ($errors->has("description"))
                         <div class="text-danger">
@@ -48,7 +48,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="price">Prezzo</label>
-                    <input type="text" name="price" id="price">
+                    <input type="text" name="price" id="price" placeholder="Prezzo...">
 
                     @if ($errors->has("price"))
                         <div class="text-danger">
@@ -59,7 +59,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="series">Serie</label>
-                    <input type="text" name="series" id="series">
+                    <input type="text" name="series" id="series" placeholder="Serie...">
 
                     @if ($errors->has("series"))
                         <div class="text-danger">
@@ -70,7 +70,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="sale_date">Data di uscita (AAAA/MM/GG)</label>
-                    <input type="text" name="sale_date" id="sale_date">
+                    <input type="text" name="sale_date" id="sale_date" placeholder="Data di uscita...">
 
                     @if ($errors->has("sale_date"))
                         <div class="text-danger">

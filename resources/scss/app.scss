@@ -1,0 +1,237 @@
+@import '~bootstrap/scss/bootstrap';
+
+$fa-font-path: "..fonts/webfonts" !default;
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+$app_blue: #0282f9;
+$app_black: #1c1c1c;
+
+.al-bg-blue{
+    background-color: $app_blue;
+    color: white;
+}
+
+.al-blue{
+    color: $app_blue;
+}
+
+ul{
+    margin-bottom: 0;
+}
+
+li{
+    list-style: none;
+    padding: 2rem 0;
+    border-bottom: 4px solid white;
+    cursor: pointer;
+
+    &:hover{
+        color: $app_blue;
+        border-bottom: 4px solid $app_blue;
+    }
+}
+
+header{
+
+    img{
+        width: 60px;
+    }
+
+    i{
+        color: grey;
+        font-size: 1.6rem;
+    }
+}
+
+.al-jumbo{
+    height: 350px;
+    background-image: url("../img/jumbotron.jpg");
+    background-size: cover;
+    background-position: top;
+}
+
+main{
+
+    background-color: $app_black;
+    color: white;
+
+    .al-cur-ser::after{
+        position: absolute;
+        content: "Current Series";
+        font-size: 1.7rem;
+        font-weight: 500;
+        padding: 0.2rem 0.8rem;
+        top: -30px;
+        left: 30px;
+        background-color: $app_blue;
+        border-style: groove;
+        border-color: $app_blue;
+        color: white;
+    }
+
+    .al-card{
+        overflow: hidden;
+        transition: transform 300ms;
+
+        .al-img-container{
+            height: 650px;
+
+            img{
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            @media screen and (min-width: 576px){
+                height: 400px;
+            }
+
+            @media screen and (min-width: 768px){
+                height: 350px;
+            }
+
+            @media screen and (min-width: 1200px){
+                height: 260px;
+            }
+        }
+
+        &:hover{
+            transform: scale(1.05);
+        }
+    }
+}
+
+.al-categories{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+
+    img{
+        width: 50px;
+    }
+}
+
+footer{
+    background-image: url("../img/dc-logo-bg.png"), url("../img/footer-bg.jpg");
+    background-repeat: no-repeat, repeat;
+    background-position: right, center;
+    color: white;
+
+    .al-grey{
+        color: rgb(160, 160, 160);
+    }
+
+    .al-bg-grey{
+        background-color: #303030;
+    }
+
+    .al-button-footer{
+        padding: 0.6rem;
+        border: 2px solid $app_blue;
+        font-weight: bold;
+    }
+}
+
+.al-blue-jumbo{
+    height: 80px;
+    background-color: $app_blue;
+
+    img{
+        width: 200px;
+        position: absolute;
+        bottom: -60px;
+        left: 6rem;
+    }
+}
+
+.al-bg-white{
+    background-color: white;
+    color: black;
+}
+
+.al-p{
+    padding: 0 6rem;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.al-ps{
+    padding-left: 0.1rem;
+}
+
+h5{
+    margin-bottom: 0;
+}
+
+a{
+    &:hover{
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.al-img-show{
+    position: absolute;
+    top: -320px;
+    left: 0;
+    width: 200px;
+    height: 310px;
+
+    img{
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+.al-button{
+    padding: 0.5rem 1.7rem;
+    color: black;
+    font-style: italic;
+    background-color: gold;
+    border: 3px groove goldenrod;
+    transition: transform 300ms;
+
+    &:hover{
+        color: black;
+        transform: scale(1.1);
+    }
+}
+
+.al-p-max{
+    padding: 6rem 0;
+}
+
+label{
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+input[type="text"]{
+    width: 100%;
+    padding: 0.3rem;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+input[type="submit"]{
+    padding: 1rem 2.4rem;
+    background-color: blueviolet;
+    color: white;
+    border: 4px groove rgb(104, 31, 173);
+    margin: 3rem 0;
+    transition: transform 300ms;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+}

@@ -9,6 +9,9 @@ use App\Models\Artist;
 use App\Models\Writer;
 use Faker\Generator as Faker;
 
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
+
 class ComicController extends Controller
 {
     /**
@@ -31,27 +34,19 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Faker $faker)
+    public function store(StoreComicRequest $request, Faker $faker)
     {
-        $validated = $request->validate([
-            "title" => "required|max:255",
-            "thumb" => "required",
-            "description" => "required",
-            "price" => "required|max:20",
-            "series" => "required|max:100",
-            "sale_date" => "required|date_format:Y/m/d"
-        ]);
+        $validated = $request->validated();
 
         $comic = new Comic();
-        $comic->fill($request->all());
+        $comic->fill($validated);
         $comic->save();
-        $id = $comic->id;
 
         $random = rand(1, 3);
         for($i = 0; $i < $random; $i++){
             $artist = new Artist();
             $artist->name = $faker->name();
-            $artist->comic_id = $id;
+            $artist->comic_id = $comic->id;
             $artist->save();
         }
 
@@ -59,11 +54,11 @@ class ComicController extends Controller
         for($i = 0; $i < $random; $i++){
             $writer = new Writer();
             $writer->name = $faker->name();
-            $writer->comic_id = $id;
+            $writer->comic_id = $comic->id;
             $writer->save();
         }
 
-        return redirect()->route("home");
+        return redirect()->route("comics.show", $comic->id)->with("mex", "Fumetto creato con successo!");
     }
 
     /**
@@ -89,24 +84,28 @@ class ComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Comic $comic)
     {
-        //
+        return view("comics.edit", ["comic" => $comic, "links" => config("data.links"), "dcComics" => config("data.dcComics"), "shops" => config("data.shops"), "dcs" => config("data.dcs"), "sites" => config("data.sites"), "categories" => config("data.categories")]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
-        //
+        $validated = $request->validated();
+
+        $comic->update($validated);
+        return redirect()->route("comics.show", $comic->id)->with("mex", "Fumetto modificato con successo!");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return redirect()->route("home")->with("mex", "Fumetto eliminato con successo!");
     }
 }

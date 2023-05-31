@@ -59,9 +59,8 @@ main{
     background-color: $app_black;
     color: white;
 
-    .al-cur-ser::after{
+    .al-cur-ser::after, .al-cur-edit::after, .al-cur-create::after{
         position: absolute;
-        content: "Current Series";
         font-size: 1.7rem;
         font-weight: 500;
         padding: 0.2rem 0.8rem;
@@ -71,6 +70,18 @@ main{
         border-style: groove;
         border-color: $app_blue;
         color: white;
+    }
+
+    .al-cur-ser::after{
+        content: "Current Series";
+    }
+
+    .al-cur-edit::after{
+        content: "Modifica Fumetto"
+    }
+
+    .al-cur-create::after{
+        content: "Crea un Fumetto";
     }
 
     .al-card{
@@ -204,6 +215,7 @@ a{
     background-color: gold;
     border: 3px groove goldenrod;
     transition: transform 300ms;
+    cursor: pointer;
 
     &:hover{
         color: black;
@@ -245,4 +257,162 @@ input[type="submit"]{
     &:hover{
         transform: scale(1.1);
     }
+}
+
+.al-bubble-speech{
+    position: absolute;
+    top: 2rem;
+    left: 5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    background-color: lightgreen;
+    color: black;
+    font-size: 1.1rem;
+    max-width: 16rem;
+    text-align: center;
+    z-index: 5;
+    opacity: 0;
+    animation: disappear 5s linear;
+
+    .al-clip{
+        width: 30px;
+        height: 40px;
+        background-color: lightgreen;
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .al-z-index{
+        position: relative;
+        z-index: 10;
+    }
+}
+
+@keyframes disappear {
+    from{
+        opacity: 1;
+    }
+
+    40%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+
+.al-cursor-pointer{
+    cursor: pointer;
+}
+
+.al-confirm{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: lightgrey;
+    color: black;
+    padding: 2rem;
+    border: 3px groove grey;
+    border-radius: 6px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.al-round{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: transform 300ms;
+    cursor: pointer;
+
+    &:hover{
+        transform: scale(1.1);
+    }
+
+    i{
+        font-size: 1.4rem;
+
+    }
+}
+
+.al-green{
+    color: rgb(0, 160, 0);
+    border: 1px solid rgb(0, 160, 0);
+}
+
+.al-red{
+    color: rgb(255, 58, 58);
+    border: 1px solid rgb(255, 58, 58);
+}
+
+.al-shadow{
+    box-shadow: 12px 10px 40px 20px rgb(14, 14, 14)
+}
+
+.al-text-wrap{
+    overflow-wrap: break-word;
+}
+
+.al-overflow-hidden{
+    overflow: hidden;
+}
+
+.al-menu{
+    transform-origin: top right;
+    transform: scale(0);
+    position: absolute;
+    right: 0;
+    // transition: transform 200ms;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: white;
+    z-index: 100;
+}
+
+.al-menu-item{
+    white-space: nowrap;
+    background-color: white;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: background-color 200ms;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.al-menu-item:hover{
+    background-color: lightgray;
+}
+
+.al-context-menu{
+    transform-origin: top left;
+    transform: scale(0);
+    position: fixed;
+    z-index: 100;
+    background-color: lightgrey;
+    color: black;
+    border-radius: 5px;
+    border: 1px solid grey;
+
+    a{
+        display: block;
+        color: black;
+        width: 100%;
+        height: 100%;
+
+        &:hover{
+            color: black;
+        }
+    }
+}
+
+.al-menu-visible{
+    transform: scale(1);
 }

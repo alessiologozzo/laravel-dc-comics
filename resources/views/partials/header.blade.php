@@ -14,7 +14,9 @@
     <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-            <img src="{{ Vite::asset('resources/img/dc-logo.png') }}" alt="dc-logo" class="py-3 py-lg-none">
+            <a href="{{route('home')}}">
+                <img src="{{ Vite::asset('resources/img/dc-logo.png') }}" alt="dc-logo" class="py-3 py-lg-none">
+            </a>
 
             <ul class="d-none d-lg-flex gap-4 text-uppercase">
                 @foreach ($links as $link)
@@ -22,7 +24,16 @@
                 @endforeach
             </ul>
 
-            <i class="fa-solid fa-bars d-lg-none"></i>
+            <div onclick="window.alFunc.showMenu(event)" class="d-flex d-lg-none al-menu-data position-relative">
+                <i class="fa-solid fa-bars al-cursor-pointer"></i>
+                <div class="al-menu">
+                    @foreach ($links as $link)
+                        <div class="al-menu-item text-uppercase">
+                            {{$link}}
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
 
     </div>

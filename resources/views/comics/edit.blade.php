@@ -1,21 +1,22 @@
 @extends('layouts.template')
 
 @section('title')
-    Nuovo Fumetto
+    Modifica Fumetto
 @endsection
 
 @section('content')
     <main>
         <div class="al-jumbo"></div>
 
-        <div class="container al-cur-create position-relative py-5">
+        <div class="container al-cur-edit position-relative py-5">
 
-            <form action="{{ route('comics.store') }}" method="POST" class="row px-3">
+            <form action="{{ route('comics.update', $comic) }}" method="POST" class="row px-3">
                 @csrf
+                @method("PUT")
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="title">Titolo</label>
-                    <input type="text" name="title" id="title" @if(!$errors->has("title")) value="{{old('title')}}" @endif placeholder="Titolo...">
+                    <input type="text" name="title" id="title" value="{{$comic->title}}" placeholder="Titolo...">
                     
                     @if ($errors->has("title"))
                         <div class="text-danger">
@@ -26,7 +27,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="thumb">Immagine</label>
-                    <input type="text" name="thumb" id="thumb" @if(!$errors->has("thumb")) value="{{old('thumb')}}" @endif placeholder="Immagine...">
+                    <input type="text" name="thumb" id="thumb" value="{{$comic->thumb}}" placeholder="Immagine...">
 
                     @if ($errors->has("thumb"))
                         <div class="text-danger">
@@ -37,7 +38,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="description">Descrizione</label>
-                    <input type="text" name="description" id="description" @if(!$errors->has("description")) value="{{old('description')}}" @endif placeholder="Descrizione...">
+                    <input type="text" name="description" id="description" value="{{$comic->description}}" placeholder="Descrizione...">
 
                     @if ($errors->has("description"))
                         <div class="text-danger">
@@ -48,7 +49,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="price">Prezzo</label>
-                    <input type="text" name="price" id="price" @if(!$errors->has("price")) value="{{old('price')}}" @endif placeholder="Prezzo...">
+                    <input type="text" name="price" id="price" value="{{$comic->price}}" placeholder="Prezzo...">
 
                     @if ($errors->has("price"))
                         <div class="text-danger">
@@ -59,7 +60,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="series">Serie</label>
-                    <input type="text" name="series" id="series" @if(!$errors->has("series")) value="{{old('series')}}" @endif placeholder="Serie...">
+                    <input type="text" name="series" id="series" value="{{$comic->series}}" placeholder="Serie...">
 
                     @if ($errors->has("series"))
                         <div class="text-danger">
@@ -70,7 +71,7 @@
 
                 <div class="col-12 col-md-6 d-flex flex-column py-2">
                     <label for="sale_date">Data di uscita (AAAA-MM-GG)</label>
-                    <input type="text" name="sale_date" id="sale_date" @if(!$errors->has("sale_date")) value="{{old('sale_date')}}" @endif placeholder="Data di uscita...">
+                    <input type="text" name="sale_date" id="sale_date" value="{{$comic->sale_date}}" placeholder="Data di uscita...">
 
                     @if ($errors->has("sale_date"))
                         <div class="text-danger">
@@ -86,7 +87,8 @@
 
             <div class="d-flex justify-content-center align-items-center gap-5 py-5">
 
-                <a href="{{ route('home') }}" class="al-button">Torna alla Home</a>
+                <a href="{{ route('home') }}" class="al-button">Vai alla Home</a>
+                <a href="{{ route('comics.show', $comic) }}" class="al-button">Vai al dettaglio del fumetto</a>
 
             </div>
 

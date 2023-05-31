@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body onclick="window.alFunc.removeMenusHandler(event), window.alFunc.removeContextMenus(event), window.alFunc.removeConfirmElementHandler(event)">
     @include("partials.header")
 
     @yield("content")

@@ -107,7 +107,6 @@ window.alFunc = {
         this.removeContextMenus();
         let confirmElement = document.getElementsByClassName("al-confirm")[0];
         confirmElement.classList.remove("d-none");
-        console.log(confirmElement.classList);
     },
 
     removeConfirmElementHandler(e){

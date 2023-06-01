@@ -105,6 +105,11 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
+        $artists = Artist::all()->where("comic_id", "=", $comic->id);
+        $writers = Writer::all()->where("comic_id", "=", $comic->id);
+
+        $artists->map->delete();
+        $writers->map->delete();
         $comic->delete();
         return redirect()->route("home")->with("mex", "Fumetto eliminato con successo!");
     }
